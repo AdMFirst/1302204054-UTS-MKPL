@@ -16,7 +16,7 @@ public class Employee extends Person{
 	private int monthWorkingInYear;
 	
 	private boolean isForeigner;
-	private boolean gender; //true = Laki-laki, false = Perempuan
+	private Gender gender; 
 	
 	private int monthlySalary;
 	private int otherMonthlyIncome;
@@ -26,7 +26,7 @@ public class Employee extends Person{
 
 	private List<Person> children;
 	
-	public Employee(String employeeId, String name, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
+	public Employee(String employeeId, String name, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, Gender gender) {
 		super(name, idNumber);
 
 		this.employeeId = employeeId;
