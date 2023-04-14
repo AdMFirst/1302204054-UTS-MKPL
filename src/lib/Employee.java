@@ -37,11 +37,6 @@ public class Employee extends Person{
 		
 	}
 	
-	/**
-	 * Fungsi untuk menentukan gaji bulanan pegawai berdasarkan grade kepegawaiannya (grade 1: 3.000.000 per bulan, grade 2: 5.000.000 per bulan, grade 3: 7.000.000 per bulan)
-	 * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
-	 */
-	
 	public void setMonthlySalary(MonthlySalaryGrade grade) {	
 		this.monthlySalary = grade.getSalary();
 		if (isForeigner) {
@@ -66,9 +61,6 @@ public class Employee extends Person{
 	}
 	
 	public int getAnnualIncomeTax() {
-		
-		// Menghitung berapa lama pegawai bekerja dalam setahun ini, 
-		// jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		
 		if (date.getYear() == joinedDate.getYear()) {
