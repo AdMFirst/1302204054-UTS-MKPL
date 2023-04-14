@@ -10,9 +10,7 @@ public class Employee extends Person{
 	private String employeeId;
 	private String address;
 	
-	private int yearJoined;
-	private int monthJoined;
-	private int dayJoined;
+	private LocalDate joinedDate; 
 	private int monthWorkingInYear;
 	
 	private boolean isForeigner;
@@ -26,14 +24,12 @@ public class Employee extends Person{
 
 	private List<Person> children;
 	
-	public Employee(String employeeId, String name, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, Gender gender) {
+	public Employee(String employeeId, String name, String idNumber, String address, LocalDate joinedDate, boolean isForeigner, Gender gender) {
 		super(name, idNumber);
 
 		this.employeeId = employeeId;
 		this.address = address;
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
-		this.dayJoined = dayJoined;
+		this.joinedDate = joinedDate;
 		this.isForeigner = isForeigner;
 		this.gender = gender;
 		
@@ -87,8 +83,8 @@ public class Employee extends Person{
 		// jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
+		if (date.getYear() == joinedDate.getYear()) {
+			monthWorkingInYear = date.getMonthValue() - joinedDate.getMonthValue();
 		}else {
 			monthWorkingInYear = 12;
 		}
