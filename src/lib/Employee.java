@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Employee extends Person{
 
-	private String idNumber;
+	private String employeeId;
 	private String address;
 	
 	private int yearJoined;
@@ -22,16 +22,14 @@ public class Employee extends Person{
 	private int otherMonthlyIncome;
 	private int annualDeductible;
 	
-	private String spouseName;
-	private String spouseIdNumber;
+	private Person spouse;
 
-	private List<String> childNames;
-	private List<String> childIdNumbers;
+	private List<Person> children;
 	
 	public Employee(String employeeId, String name, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
-		super(name, employeeId);
-		
-		this.idNumber = idNumber;
+		super(name, idNumber);
+
+		this.employeeId = employeeId;
 		this.address = address;
 		this.yearJoined = yearJoined;
 		this.monthJoined = monthJoined;
@@ -39,8 +37,8 @@ public class Employee extends Person{
 		this.isForeigner = isForeigner;
 		this.gender = gender;
 		
-		childNames = new LinkedList<String>();
-		childIdNumbers = new LinkedList<String>();
+		children = new LinkedList<Person>();
+		
 	}
 	
 	/**
@@ -75,19 +73,18 @@ public class Employee extends Person{
 		this.otherMonthlyIncome = income;
 	}
 	
-	public void setSpouse(String spouseName, String spouseIdNumber) {
-		this.spouseName = spouseName;
-		this.spouseIdNumber = idNumber;
+	public void setSpouse(Person spouse) {
+		this.spouse = spouse;
 	}
 	
-	public void addChild(String childName, String childIdNumber) {
-		childNames.add(childName);
-		childIdNumbers.add(childIdNumber);
+	public void addChild(Person child) {
+		children.add(child);
 	}
 	
 	public int getAnnualIncomeTax() {
 		
-		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
+		// Menghitung berapa lama pegawai bekerja dalam setahun ini, 
+		// jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		
 		if (date.getYear() == yearJoined) {
@@ -96,6 +93,13 @@ public class Employee extends Person{
 			monthWorkingInYear = 12;
 		}
 		
-		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, spouseIdNumber.equals(""), childIdNumbers.size());
+		return TaxFunction.calculateTax(
+			monthlySalary, 
+			otherMonthlyIncome, 
+			monthWorkingInYear, 
+			annualDeductible, 
+			spouse.equals(null), 
+			children.size()
+		);
 	}
 }
