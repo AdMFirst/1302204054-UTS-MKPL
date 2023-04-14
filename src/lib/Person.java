@@ -1,19 +1,19 @@
 package lib;
 
 public class Person {
-    private int id;
+    private String id;
     private String name;
 
-    Person(String name, int id) {
+    Person(String name, String id) {
         this.id = id;
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

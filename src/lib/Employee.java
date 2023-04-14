@@ -5,11 +5,8 @@ import java.time.Month;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Employee {
+public class Employee extends Person{
 
-	private String employeeId;
-	private String firstName;
-	private String lastName;
 	private String idNumber;
 	private String address;
 	
@@ -31,10 +28,9 @@ public class Employee {
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public Employee(String employeeId, String name, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
+		super(name, employeeId);
+		
 		this.idNumber = idNumber;
 		this.address = address;
 		this.yearJoined = yearJoined;
